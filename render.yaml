@@ -1,0 +1,30 @@
+# One-click deploy on Render (https://render.com): New > Blueprint > pick this repo.
+# Create a free MongoDB Atlas cluster first and paste its connection string as MONGODB_URI.
+services:
+  - type: web
+    name: smart-life-admin
+    runtime: node
+    buildCommand: cd client && npm install && npm run build && cd ../server && npm install
+    startCommand: cd server && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
+      - key: VAPID_SUBJECT
+        sync: false
+      - key: SMS_PROVIDER
+        value: mock
+      - key: SMS_API_KEY
+        sync: false
+      - key: SMS_API_SECRET
+        sync: false
+      - key: SMS_FROM_NUMBER
+        sync: false

@@ -1,0 +1,8 @@
+{
+  "appId": "com.smartlifeadmin.app",
+  "appName": "Smart Life Admin",
+  "webDir": "dist",
+  "backgroundColor": "#F5F4FA",
+  "server": { "androidScheme": "https" },
+  "android": { "allowMixedContent": false }
+}
